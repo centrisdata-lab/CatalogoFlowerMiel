@@ -1,0 +1,12 @@
+# Material de trabajo (fotos originales, no publicar)
+FOTOS NUEVAS/
+*.jpg
+*.jpeg
+*.png
+*.ogg
+*.zip
+!assets/img/**
+
+# Sistema
+.DS_Store
+Thumbs.db
