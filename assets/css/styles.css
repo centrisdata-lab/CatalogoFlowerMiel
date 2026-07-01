@@ -690,6 +690,12 @@ h1, h2, h3 {
   color: var(--color-primary-light);
 }
 
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .footer-bottom {
   padding-block: 24px;
   text-align: center;
