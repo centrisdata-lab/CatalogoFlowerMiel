@@ -246,6 +246,7 @@ function initImageZoom() {
   const modalCaption = document.getElementById("imageModalCaption");
   const modalClose = document.getElementById("imageModalClose");
   const grid = document.getElementById("productGrid");
+  const gallery = document.getElementById("apiturismoGallery");
 
   function openModal(imageSrc, name) {
     modalImg.src = imageSrc;
@@ -266,6 +267,12 @@ function initImageZoom() {
     const card = trigger.closest(".product-card");
     const img = trigger.querySelector(".product-image");
     openModal(img.src, card.querySelector(".product-name").textContent);
+  });
+
+  gallery.addEventListener("click", (event) => {
+    const img = event.target.closest("img");
+    if (!img) return;
+    openModal(img.src, img.alt);
   });
 
   modalClose.addEventListener("click", closeModal);
