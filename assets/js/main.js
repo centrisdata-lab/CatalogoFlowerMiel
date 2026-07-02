@@ -279,7 +279,7 @@ function initImageZoom() {
   if (galleryToggle) {
     galleryToggle.addEventListener("click", () => {
       const expanded = galleryToggle.dataset.expanded === "true";
-      gallery.querySelectorAll(".gallery-item-hidden").forEach((item) => {
+      gallery.querySelectorAll(".gallery-item-extra").forEach((item) => {
         item.classList.toggle("gallery-item-hidden", expanded);
       });
       galleryToggle.dataset.expanded = String(!expanded);
