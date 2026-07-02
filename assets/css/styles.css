@@ -698,6 +698,33 @@ h1, h2, h3 {
 
   .apiturismo-gallery {
     grid-template-columns: repeat(3, 1fr);
+    max-height: 640px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secondary) var(--color-surface);
+  }
+
+  .apiturismo-gallery::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .apiturismo-gallery::-webkit-scrollbar-track {
+    background: var(--color-surface);
+    border-radius: 8px;
+  }
+
+  .apiturismo-gallery::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border-radius: 8px;
+  }
+
+  .apiturismo-gallery .gallery-item.gallery-item-hidden {
+    display: block;
+  }
+
+  .apiturismo-gallery-toggle {
+    display: none;
   }
 }
 
