@@ -275,6 +275,18 @@ function initImageZoom() {
     openModal(img.src, img.alt);
   });
 
+  const galleryToggle = document.getElementById("apiturismoGalleryToggle");
+  if (galleryToggle) {
+    galleryToggle.addEventListener("click", () => {
+      const expanded = galleryToggle.dataset.expanded === "true";
+      gallery.querySelectorAll(".gallery-item-hidden").forEach((item) => {
+        item.classList.toggle("gallery-item-hidden", expanded);
+      });
+      galleryToggle.dataset.expanded = String(!expanded);
+      galleryToggle.textContent = expanded ? "Ver más fotos" : "Ver menos fotos";
+    });
+  }
+
   modalClose.addEventListener("click", closeModal);
   modal.addEventListener("click", (event) => {
     if (event.target === modal) closeModal();
