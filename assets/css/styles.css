@@ -41,6 +41,14 @@ html {
   scroll-behavior: smooth;
 }
 
+#catalogo,
+#apiturismo,
+#rescate,
+#nosotros,
+#contacto {
+  scroll-margin-top: 108px;
+}
+
 body {
   font-family: var(--font-body);
   color: var(--color-text);
@@ -342,6 +350,64 @@ h1, h2, h3 {
   letter-spacing: 0.08em;
   font-size: 0.85rem;
   margin-bottom: 10px;
+}
+
+/* ============================================
+   Quick nav (mobile only)
+   ============================================ */
+
+.quick-nav {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .quick-nav {
+    display: block;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 93px;
+    z-index: 90;
+  }
+
+  .quick-nav-inner {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-block: 12px;
+    scrollbar-width: none;
+  }
+
+  .quick-nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .quick-nav-item {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    color: var(--color-text);
+    font-weight: 600;
+    font-size: 0.88rem;
+    white-space: nowrap;
+    transition: background var(--transition-base), border-color var(--transition-base);
+  }
+
+  .quick-nav-item:active,
+  .quick-nav-item:hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .quick-nav-icon {
+    font-size: 1rem;
+  }
 }
 
 /* ============================================
@@ -1062,6 +1128,14 @@ h1, h2, h3 {
   .nav-cta {
     margin-top: 12px;
     text-align: center;
+  }
+
+  #catalogo,
+  #apiturismo,
+  #rescate,
+  #nosotros,
+  #contacto {
+    scroll-margin-top: 172px;
   }
 }
 
