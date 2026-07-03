@@ -22,6 +22,14 @@ const PRODUCTS = [
     image: "assets/img/miel-pura-300g.jpg"
   },
   {
+    id: "miel-95",
+    name: "Miel Pura y Cruda 95gr",
+    category: "mieles",
+    price: 6000,
+    description: "Miel 100% pura y cruda en tamaño ideal para llevar siempre contigo y endulzar tus bebidas. Rica en antioxidantes y propiedades beneficiosas.",
+    image: "assets/img/miel-pura-95g.jpg"
+  },
+  {
     id: "miel-abejas-nativas",
     name: "Miel de Abejas Nativas 5gr",
     category: "mieles",
