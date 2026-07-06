@@ -9,7 +9,7 @@ const PRODUCTS = [
     category: "mieles",
     price: 35000,
     description: "Miel 100% pura y cruda, recolectada de las mejores flores. Conserva su sabor intenso y todas sus propiedades naturales.",
-    image: "assets/img/miel-pura-650g.jpg"
+    image: "../assets/img/miel-pura-650g.jpg"
   },
   {
     id: "miel-300",
@@ -17,7 +17,7 @@ const PRODUCTS = [
     category: "mieles",
     price: 18000,
     description: "Miel artesanal sin procesos de refinamiento, con la esencia natural de las flores en un sabor fresco e intenso.",
-    image: "assets/img/miel-pura-300g.jpg"
+    image: "../assets/img/miel-pura-300g.jpg"
   },
   {
     id: "miel-95",
@@ -25,7 +25,7 @@ const PRODUCTS = [
     category: "mieles",
     price: 6000,
     description: "Miel 100% pura y cruda en tamaño ideal para llevar siempre contigo y endulzar tus bebidas. Rica en antioxidantes y propiedades beneficiosas.",
-    image: "assets/img/miel-pura-95g.jpg"
+    image: "../assets/img/miel-pura-95g.jpg"
   },
   {
     id: "miel-abejas-nativas",
@@ -33,7 +33,7 @@ const PRODUCTS = [
     category: "mieles",
     price: 10000,
     description: "Miel de abejas nativas, 100% natural, ideal para apoyar la salud visual gracias a sus antioxidantes naturales.",
-    image: "assets/img/miel-abejas-nativas.jpg"
+    image: "../assets/img/miel-abejas-nativas.jpg"
   },
   {
     id: "propoleo-25",
@@ -41,7 +41,7 @@ const PRODUCTS = [
     category: "bienestar",
     price: 20000,
     description: "Propóleo natural con propiedades antioxidantes, ideal para fortalecer el sistema inmunológico y el bienestar diario.",
-    image: "assets/img/propoleo-25ml.jpg"
+    image: "../assets/img/propoleo-25ml.jpg"
   },
   {
     id: "polen-70",
@@ -49,7 +49,7 @@ const PRODUCTS = [
     category: "bienestar",
     price: 10000,
     description: "Rico en vitaminas, minerales y antioxidantes. Promueve la energía y el bienestar general de forma 100% natural.",
-    image: "assets/img/polen-70g.jpg"
+    image: "../assets/img/polen-70g.jpg"
   },
   {
     id: "crema-facial-queen",
@@ -57,7 +57,7 @@ const PRODUCTS = [
     category: "cuidado-personal",
     price: 13000,
     description: "Crema facial restauradora a base de cera de abejas. Hidrata profundamente y protege tu piel de manera natural.",
-    image: "assets/img/crema-facial-queen.jpg"
+    image: "../assets/img/crema-facial-queen.jpg"
   },
   {
     id: "shampoo-natural",
@@ -65,7 +65,7 @@ const PRODUCTS = [
     category: "cuidado-personal",
     price: 23000,
     description: "A base de extractos herbales, miel y propóleo. Limpia y nutre profundamente dejando el cabello suave y brillante.",
-    image: "assets/img/shampoo-natural.jpg"
+    image: "../assets/img/shampoo-natural.jpg"
   },
   {
     id: "brillolips-bee",
@@ -73,7 +73,7 @@ const PRODUCTS = [
     category: "cuidado-personal",
     price: 8000,
     description: "Bálsamo labial 100% natural con cera de abejas. Hidrata, nutre y da brillo natural a tus labios.",
-    image: "assets/img/brillolips-bee.jpg"
+    image: "../assets/img/brillolips-bee.jpg"
   },
   {
     id: "extracto-plantas",
@@ -81,7 +81,7 @@ const PRODUCTS = [
     category: "cuidado-personal",
     price: 30000,
     description: "Fórmula natural con extractos de plantas que ayuda a detener la caída del cabello y estimula su crecimiento.",
-    image: "assets/img/extracto-plantas.jpg"
+    image: "../assets/img/extracto-plantas.jpg"
   },
   {
     id: "combo-miel",
@@ -89,7 +89,7 @@ const PRODUCTS = [
     category: "combos",
     price: 38000,
     description: "Incluye Miel Pura y Cruda 300g, Crema Facial Restauradora Queen, Brillolips_Bee y bolinillo mielero. 100% natural.",
-    image: "assets/img/combo-miel.jpg"
+    image: "../assets/img/combo-miel.jpg"
   },
   {
     id: "kit-natural",
@@ -97,7 +97,7 @@ const PRODUCTS = [
     category: "combos",
     price: 65000,
     description: "Lo mejor de la colmena: Miel 650g, Polen 80g, Propóleo 35ml y bolinillo mielero. Fortalece tu sistema inmunológico.",
-    image: "assets/img/kit-natural.jpg"
+    image: "../assets/img/kit-natural.jpg"
   },
   {
     id: "kit-natural-mini",
@@ -105,7 +105,7 @@ const PRODUCTS = [
     category: "combos",
     price: 48000,
     description: "Lo mejor de la colmena en presentación mini: Miel 300g, Polen 80g, Propóleo 35ml y bolinillo mielero. 100% natural.",
-    image: "assets/img/kit-natural-mini.jpg"
+    image: "../assets/img/kit-natural-mini.jpg"
   },
   {
     id: "combo-cafe-miel",
@@ -113,7 +113,7 @@ const PRODUCTS = [
     category: "combos",
     price: 70000,
     description: "Combo exclusivo Marcál Café + Flower Miel: Café Excelso Molido 250g y Miel de Abejas Pura y Cruda 650g. Dos marcas, lo mejor de la naturaleza.",
-    image: "assets/img/combo-cafe-miel.jpg"
+    image: "../assets/img/combo-cafe-miel.jpg"
   }
 ];
 
