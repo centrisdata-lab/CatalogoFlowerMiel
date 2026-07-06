@@ -243,7 +243,6 @@ function initImageZoom() {
   const modalCaption = document.getElementById("imageModalCaption");
   const modalClose = document.getElementById("imageModalClose");
   const grid = document.getElementById("productGrid");
-  const gallery = document.getElementById("apiturismoGallery");
 
   function openModal(imageSrc, name) {
     modalImg.src = imageSrc;
@@ -265,24 +264,6 @@ function initImageZoom() {
     const img = trigger.querySelector(".product-image");
     openModal(img.src, card.querySelector(".product-name").textContent);
   });
-
-  gallery.addEventListener("click", (event) => {
-    const img = event.target.closest("img");
-    if (!img) return;
-    openModal(img.src, img.alt);
-  });
-
-  const galleryToggle = document.getElementById("apiturismoGalleryToggle");
-  if (galleryToggle) {
-    galleryToggle.addEventListener("click", () => {
-      const expanded = galleryToggle.dataset.expanded === "true";
-      gallery.querySelectorAll(".gallery-item-extra").forEach((item) => {
-        item.classList.toggle("gallery-item-hidden", expanded);
-      });
-      galleryToggle.dataset.expanded = String(!expanded);
-      galleryToggle.textContent = expanded ? "Ver más fotos" : "Ver menos fotos";
-    });
-  }
 
   modalClose.addEventListener("click", closeModal);
   modal.addEventListener("click", (event) => {
