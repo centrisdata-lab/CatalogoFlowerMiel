@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flower Miel | Catálogo Natural</title>
+<meta name="description" content="Flower Miel - Productos naturales de la colmena: miel, propóleo, polen y cosmética natural.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍯</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="top">
+  <div class="header-inner container">
+    <a href="#top" class="brand">
+      <img src="assets/img/logo-flower-miel.png" alt="Flower Miel" class="brand-logo">
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#apiturismo">Apiturismo</a>
+      <a href="#rescate">Rescate de Abejas</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('assets/img/hero-banner.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow">Naturalmente saludable 🐝</p>
+    <h1>Lo mejor de la colmena, <span>directo a tu puerta</span></h1>
+    <p class="hero-subtitle">Miel pura y cruda, propóleo, polen y cosmética natural elaborada artesanalmente. 100% natural, sin aditivos ni conservantes.</p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK NAV (solo móvil) -->
+<nav class="quick-nav" aria-label="Accesos rápidos">
+  <div class="container quick-nav-inner">
+    <a href="#catalogo" class="quick-nav-item">
+      <span class="quick-nav-icon">🍯</span>
+      Catálogo
+    </a>
+    <a href="#apiturismo" class="quick-nav-item">
+      <span class="quick-nav-icon">🐝</span>
+      Apiturismo
+    </a>
+    <a href="#rescate" class="quick-nav-item">
+      <span class="quick-nav-icon">🛡️</span>
+      Rescate de Abejas
+    </a>
+    <a href="#nosotros" class="quick-nav-item">
+      <span class="quick-nav-icon">🌿</span>
+      Nosotros
+    </a>
+  </div>
+</nav>
+
+<!-- CATALOGO -->
+<main>
+<section class="catalog-section" id="catalogo">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Nuestro Catálogo</h2>
+      <p>Explora todos nuestros productos 100% naturales, elaborados con dedicación desde la colmena hasta tu hogar.</p>
+    </div>
+
+    <!-- Controls: search + filters -->
+    <div class="catalog-controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Buscar producto... (ej. miel, propóleo, crema)">
+      </div>
+
+      <div class="filter-chips" id="filterChips">
+        <button class="chip active" data-filter="todos">Todos</button>
+        <button class="chip" data-filter="mieles">Mieles</button>
+        <button class="chip" data-filter="bienestar">Bienestar</button>
+        <button class="chip" data-filter="cuidado-personal">Cuidado Personal</button>
+        <button class="chip" data-filter="combos">Combos y Kits</button>
+      </div>
+    </div>
+
+    <!-- Product grid -->
+    <div class="product-grid" id="productGrid"></div>
+
+    <p class="no-results" id="noResults" hidden>No se encontraron productos que coincidan con tu búsqueda 🐝</p>
+  </div>
+</section>
+
+<!-- APITURISMO -->
+<section class="apiturismo-section" id="apiturismo">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Apiturismo</h2>
+      <p>Vive una experiencia única y conéctate con el fascinante mundo de las abejas en su hábitat natural.</p>
+    </div>
+
+    <div class="apiturismo-inner">
+      <div class="apiturismo-info">
+        <p class="section-tag">La experiencia incluye</p>
+        <ul class="apiturismo-list">
+          <li>
+            <span class="apiturismo-icon">🎓</span>
+            <div>
+              <h3>Capacitación especializada</h3>
+              <p>Aprende sobre el mundo de las abejas de la mano de nuestro equipo.</p>
+            </div>
+          </li>
+          <li>
+            <span class="apiturismo-icon">🍯</span>
+            <div>
+              <h3>Cata de miel</h3>
+              <p>Descubre sus sabores y propiedades en una degustación guiada.</p>
+            </div>
+          </li>
+          <li>
+            <span class="apiturismo-icon">🐝</span>
+            <div>
+              <h3>Recorrido 100% guiado</h3>
+              <p>5 estaciones interactivas con un experto apícola y un profesional de la salud.</p>
+            </div>
+          </li>
+          <li>
+            <span class="apiturismo-icon">💧</span>
+            <div>
+              <h3>Hidratación</h3>
+              <p>Incluida durante toda la experiencia.</p>
+            </div>
+          </li>
+          <li>
+            <span class="apiturismo-icon">🏅</span>
+            <div>
+              <h3>Certificado oficial</h3>
+              <p>Recibe tu certificado de Guardián de las Abejas.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="apiturismo-gallery" id="apiturismoGallery">
+        <div class="gallery-item"><img src="assets/img/apiturismo/apiturismo-20.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/img/apiturismo/apiturismo-21.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/img/apiturismo/apiturismo-22.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/img/apiturismo/apiturismo-23.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/img/apiturismo/apiturismo-24.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item"><img src="assets/img/apiturismo/apiturismo-25.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-26.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-27.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-28.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-29.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-31.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-32.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-33.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-34.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-35.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-36.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-37.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-38.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-39.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-40.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-41.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-42.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+        <div class="gallery-item gallery-item-extra gallery-item-hidden"><img src="assets/img/apiturismo/apiturismo-43.jpg" alt="Experiencia de Apiturismo en Flower Miel" loading="lazy"></div>
+      </div>
+      <button type="button" class="btn apiturismo-gallery-toggle" id="apiturismoGalleryToggle">Ver más fotos</button>
+    </div>
+  </div>
+</section>
+
+<!-- RESCATE DE ABEJAS -->
+<section class="rescate-section" id="rescate">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Rescate de Abejas</h2>
+      <p>¿Tienes un enjambre de abejas o avispas en casa? No las extermines: nosotros las rescatamos y reubicamos.</p>
+    </div>
+
+    <div class="rescate-inner rescate-inner-no-photos">
+      <div class="rescate-info">
+        <p class="rescate-alert">⚠️ Exterminar abejas puede traerte problemas legales. La Ley 2193 prohíbe su eliminación y promueve su protección.</p>
+
+        <p class="section-tag">Nosotros las rescatamos y reubicamos</p>
+        <ul class="rescate-list">
+          <li>
+            <span class="rescate-icon">✅</span>
+            <p>Rescate y protección de abejas y avispas</p>
+          </li>
+          <li>
+            <span class="rescate-icon">✅</span>
+            <p>Reubicación segura y ecológica de enjambres</p>
+          </li>
+          <li>
+            <span class="rescate-icon">✅</span>
+            <p>Atención rápida en zonas urbanas y rurales</p>
+          </li>
+        </ul>
+
+        <p class="rescate-coverage">📍 Cobertura solo en la subregión del Valle de Aburrá - Antioquia</p>
+        <p class="rescate-tagline">Más de 5 años salvando abejas, sembrando vida.</p>
+
+        <div class="rescate-contact">
+          <p><strong>Samuel González Ocampo</strong><br>Apicultor certificado</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="about-section" id="nosotros">
+  <div class="container about-inner">
+    <div class="about-text">
+      <p class="section-tag">Sobre nosotros</p>
+      <h2>Miel que cuida de ti</h2>
+      <p>En Flower Miel llevamos a tu mesa lo mejor de la colmena: miel pura y cruda, propóleo, polen y productos de cuidado personal elaborados de forma artesanal, sin aditivos ni conservantes. Cada producto conserva la esencia natural de las flores y el trabajo de nuestras abejas.</p>
+      <div class="about-badges">
+        <div class="badge"><span>🌿</span>100% Natural</div>
+        <div class="badge"><span>🐝</span>Directo de la colmena</div>
+        <div class="badge"><span>💛</span>Elaboración artesanal</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="contacto">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/img/logo-flower-miel-blanco.png" alt="Flower Miel" class="brand-logo brand-logo-footer">
+      <p>Naturalmente saludable. Lo mejor de la colmena para tu bienestar.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <ul>
+        <li>📞 +57 320 856 8248</li>
+        <li>
+          <a href="https://www.instagram.com/flowermiel_/" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.198-4.354-2.618-6.78-6.98-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.163 6.163 0 100 12.326 6.163 6.163 0 000-12.326zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-10.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @flowermiel_
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/ApiturismoFlowerMiel" target="_blank" rel="noopener" class="social-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            Flower Miel
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#top">Inicio</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>&copy; <span id="year"></span> Flower Miel. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-modal-content">
+    <button class="image-modal-close" id="imageModalClose" aria-label="Cerrar">&times;</button>
+    <img src="" alt="" id="imageModalImg">
+    <p class="image-modal-caption" id="imageModalCaption"></p>
+  </div>
+</div>
+
+<script src="assets/js/main-vendedores.js"></script>
+</body>
+</html>
