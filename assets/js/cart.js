@@ -58,17 +58,18 @@
     return items.reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
   }
 
-  function add(product) {
+  function add(product, qty) {
+    const amount = Math.max(1, qty || 1);
     const existing = items.find(function (item) { return item.id === product.id; });
     if (existing) {
-      existing.qty += 1;
+      existing.qty += amount;
     } else {
       items.push({
         id: product.id,
         name: product.name,
         price: product.price,
         image: product.image,
-        qty: 1
+        qty: amount
       });
     }
     saveItems();

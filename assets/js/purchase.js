@@ -195,6 +195,17 @@
       '    </div>' +
       '  </div>' +
       '  <ul class="purchase-items" hidden></ul>' +
+      '  <div class="purchase-qty-row" hidden>' +
+      '    <div class="purchase-qty">' +
+      '      <button type="button" class="purchase-qty-dec" aria-label="Reducir cantidad">&minus;</button>' +
+      '      <span class="purchase-qty-value">1</span>' +
+      '      <button type="button" class="purchase-qty-inc" aria-label="Aumentar cantidad">+</button>' +
+      '    </div>' +
+      '    <button type="button" class="purchase-add-cart">' +
+      '      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="10" y1="10" x2="14" y2="10"/></svg>' +
+      '      Añadir al carrito' +
+      '    </button>' +
+      '  </div>' +
       '  <p class="purchase-modal-question">¿Cómo deseas realizar tu compra?</p>' +
       '  <div class="purchase-options">' +
       PAYMENT_METHODS.map(function (method) {
@@ -259,6 +270,22 @@
       onOrderConfirmed(currentOrder);
     });
 
+    // Selector de cantidad (solo en compra de un producto): actualiza el
+    // precio mostrado y la cantidad que llevará el pedido/carrito.
+    modal.querySelector(".purchase-qty-dec").addEventListener("click", function () {
+      changeQty(-1);
+    });
+    modal.querySelector(".purchase-qty-inc").addEventListener("click", function () {
+      changeQty(1);
+    });
+
+    modal.querySelector(".purchase-add-cart").addEventListener("click", function () {
+      if (!currentOrder || !window.FlowerCart) return;
+      const item = currentOrder.items[0];
+      window.FlowerCart.add({ id: item.id, name: item.name, price: item.price, image: item.image }, item.qty);
+      close();
+    });
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") close();
     });
@@ -273,11 +300,25 @@
     notice.hidden = false;
   }
 
+  // El selector de cantidad solo aplica al comprar un producto suelto
+  // (desde el carrito las cantidades se manejan en el propio carrito).
+  function qtyRowApplies(order) {
+    return Boolean(order) && order.items.length === 1 && !order.fromCart;
+  }
+
+  function changeQty(delta) {
+    if (!currentOrder || !qtyRowApplies(currentOrder)) return;
+    const item = currentOrder.items[0];
+    item.qty = Math.max(1, item.qty + delta);
+    renderOrderSummary(currentOrder);
+  }
+
   function showMethodsView(modal) {
     modal.querySelector(".purchase-modal-question").hidden = false;
     modal.querySelector(".purchase-options").hidden = false;
     modal.querySelector(".purchase-notice").hidden = true;
     modal.querySelector(".purchase-nequi-panel").hidden = true;
+    modal.querySelector(".purchase-qty-row").hidden = !qtyRowApplies(currentOrder);
   }
 
   function showNequiPanel(order, modal) {
@@ -288,6 +329,7 @@
     modal.querySelector(".purchase-modal-question").hidden = true;
     modal.querySelector(".purchase-options").hidden = true;
     modal.querySelector(".purchase-notice").hidden = true;
+    modal.querySelector(".purchase-qty-row").hidden = true;
     modal.querySelector(".purchase-nequi-panel").hidden = false;
   }
 
@@ -301,11 +343,13 @@
     img.src = firstItem.image;
     img.alt = firstItem.name;
 
-    if (isSingleUnit(order)) {
+    if (order.items.length === 1) {
       nameEl.textContent = firstItem.name;
-      priceEl.textContent = formatPrice(firstItem.price);
+      priceEl.textContent = formatPrice(firstItem.price * firstItem.qty) +
+        (firstItem.qty > 1 ? " · " + firstItem.qty + " × " + formatPrice(firstItem.price) : "");
       itemsEl.hidden = true;
       itemsEl.innerHTML = "";
+      modalEl.querySelector(".purchase-qty-value").textContent = String(firstItem.qty);
       return;
     }
 
