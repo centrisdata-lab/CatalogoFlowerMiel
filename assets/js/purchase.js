@@ -206,6 +206,7 @@
       '      Añadir al carrito' +
       '    </button>' +
       '  </div>' +
+      '  <p class="purchase-qty-hint">💡 Usa "Añadir al carrito" solo si quieres comprar más productos. Si únicamente llevas este, elige abajo cómo pagar.</p>' +
       '  <p class="purchase-modal-question">¿Cómo deseas realizar tu compra?</p>' +
       '  <div class="purchase-options">' +
       PAYMENT_METHODS.map(function (method) {
@@ -319,6 +320,7 @@
     modal.querySelector(".purchase-notice").hidden = true;
     modal.querySelector(".purchase-nequi-panel").hidden = true;
     modal.querySelector(".purchase-qty-row").hidden = !qtyRowApplies(currentOrder);
+    modal.querySelector(".purchase-qty-hint").hidden = !qtyRowApplies(currentOrder);
   }
 
   function showNequiPanel(order, modal) {
@@ -330,6 +332,7 @@
     modal.querySelector(".purchase-options").hidden = true;
     modal.querySelector(".purchase-notice").hidden = true;
     modal.querySelector(".purchase-qty-row").hidden = true;
+    modal.querySelector(".purchase-qty-hint").hidden = true;
     modal.querySelector(".purchase-nequi-panel").hidden = false;
   }
 

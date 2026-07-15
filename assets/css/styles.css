@@ -1567,6 +1567,13 @@ h1, h2, h3 {
   color: #fff;
 }
 
+.purchase-qty-hint {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: -8px 0 16px;
+}
+
 /* Lista de productos del pedido (modo carrito) en el modal de compra */
 .purchase-items {
   list-style: none;
