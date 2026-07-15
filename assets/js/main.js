@@ -150,10 +150,12 @@ function createProductCard(product) {
       <p class="product-description">${product.description}</p>
       <div class="product-footer">
         <span class="product-price">${priceFormatter.format(product.price)}</span>
-        <button type="button" class="btn btn-primary btn-buy">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          Comprar
-        </button>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart" aria-label="Agregar al carrito" title="Agregar al carrito">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="10" y1="10" x2="14" y2="10"/></svg>
+          </button>
+          <button type="button" class="btn btn-primary btn-buy">Comprar</button>
+        </div>
       </div>
     </div>
   `;
@@ -195,10 +197,21 @@ function initBuyButtons() {
   const grid = document.getElementById("productGrid");
   grid.addEventListener("click", (event) => {
     const buyButton = event.target.closest(".btn-buy");
-    if (!buyButton) return;
-    const card = buyButton.closest(".product-card");
+    const cartButton = event.target.closest(".btn-add-cart");
+    if (!buyButton && !cartButton) return;
+
+    const card = (buyButton || cartButton).closest(".product-card");
     const product = PRODUCTS.find((p) => p.id === card.dataset.productId);
-    if (product) window.FlowerPurchase.open(product);
+    if (!product) return;
+
+    if (buyButton) {
+      window.FlowerPurchase.open(product);
+      return;
+    }
+
+    window.FlowerCart.add(product);
+    cartButton.classList.add("added");
+    setTimeout(() => cartButton.classList.remove("added"), 1200);
   });
 }
 
