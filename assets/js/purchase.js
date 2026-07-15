@@ -15,6 +15,12 @@
 
   const PURCHASE_WHATSAPP_NUMBER = "573208568248";
 
+  // Transferencia directa a Nequi (sin pasarela ni comisiones).
+  const NEQUI_CONFIG = {
+    number: "3208568248",
+    displayNumber: "320 856 8248"
+  };
+
   // Pasarela de pagos en línea (Colombia).
   // Estructura preparada para Wompi (soporta PSE, tarjetas, Botón Bancolombia,
   // Nequi). Para activarla:
@@ -84,6 +90,15 @@
       }
     },
     {
+      id: "nequi",
+      icon: "📲",
+      title: "Transferir a Nequi",
+      description: "Transfiere el valor exacto y confírmanos por WhatsApp.",
+      handler(product, modal) {
+        showNequiPanel(product, modal);
+      }
+    },
+    {
       id: "whatsapp",
       icon: "",
       iconSvg: '<svg viewBox="0 0 24 24" width="26" height="26" fill="#25d366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.876.51 3.633 1.398 5.144L2 22l4.965-1.372A9.94 9.94 0 0012.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.062a8.03 8.03 0 01-4.099-1.126l-.294-.175-3.038.84.812-2.96-.192-.303A8.024 8.024 0 013.938 12c0-4.444 3.618-8.062 8.063-8.062 4.444 0 8.062 3.618 8.062 8.062 0 4.445-3.618 8.062-8.062 8.062z"/></svg>',
@@ -144,6 +159,23 @@
       }).join("") +
       '  </div>' +
       '  <p class="purchase-notice" hidden></p>' +
+      '  <div class="purchase-nequi-panel" hidden>' +
+      '    <p class="purchase-nequi-title">📲 Transfiere por Nequi</p>' +
+      '    <div class="purchase-nequi-number-row">' +
+      '      <span class="purchase-nequi-number">' + NEQUI_CONFIG.displayNumber + '</span>' +
+      '      <button type="button" class="purchase-nequi-copy">Copiar</button>' +
+      '    </div>' +
+      '    <p class="purchase-nequi-amount">Valor a transferir: <strong class="purchase-nequi-amount-value"></strong></p>' +
+      '    <ol class="purchase-nequi-steps">' +
+      '      <li>Abre tu app Nequi y envía el valor exacto a ese número.</li>' +
+      '      <li>Toca el botón verde para confirmarnos tu transferencia.</li>' +
+      '      <li>¡Listo! Alistamos tu pedido de inmediato. 🐝</li>' +
+      '    </ol>' +
+      '    <a class="btn btn-whatsapp btn-block purchase-nequi-confirm" target="_blank" rel="noopener" href="#">' +
+      '      Ya transferí · Confirmar por WhatsApp' +
+      '    </a>' +
+      '    <button type="button" class="purchase-nequi-back">&larr; Elegir otro método de pago</button>' +
+      '  </div>' +
       '</div>';
 
     modal.addEventListener("click", function (event) {
@@ -158,12 +190,48 @@
       });
     });
 
+    modal.querySelector(".purchase-nequi-back").addEventListener("click", function () {
+      showMethodsView(modal);
+    });
+
+    modal.querySelector(".purchase-nequi-copy").addEventListener("click", function () {
+      const button = this;
+      navigator.clipboard.writeText(NEQUI_CONFIG.number).then(function () {
+        button.textContent = "¡Copiado!";
+        setTimeout(function () { button.textContent = "Copiar"; }, 2000);
+      }).catch(function () {
+        button.textContent = NEQUI_CONFIG.number;
+      });
+    });
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape") close();
     });
 
     document.body.appendChild(modal);
     return modal;
+  }
+
+  function showMethodsView(modal) {
+    modal.querySelector(".purchase-modal-question").hidden = false;
+    modal.querySelector(".purchase-options").hidden = false;
+    modal.querySelector(".purchase-notice").hidden = true;
+    modal.querySelector(".purchase-nequi-panel").hidden = true;
+  }
+
+  function showNequiPanel(product, modal) {
+    const priceLabel = formatPrice(product.price);
+    modal.querySelector(".purchase-nequi-amount-value").textContent = priceLabel;
+
+    const message = "Hola, acabo de hacer la transferencia por Nequi de " + priceLabel +
+      " para el producto: " + product.name + ". Por favor alistar mi pedido. 🙌";
+    modal.querySelector(".purchase-nequi-confirm").href =
+      "https://wa.me/" + PURCHASE_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+
+    modal.querySelector(".purchase-modal-question").hidden = true;
+    modal.querySelector(".purchase-options").hidden = true;
+    modal.querySelector(".purchase-notice").hidden = true;
+    modal.querySelector(".purchase-nequi-panel").hidden = false;
   }
 
   function showNotice(modal, message) {
@@ -181,7 +249,7 @@
     img.alt = product.name;
     modalEl.querySelector(".purchase-product-name").textContent = product.name;
     modalEl.querySelector(".purchase-product-price").textContent = formatPrice(product.price);
-    modalEl.querySelector(".purchase-notice").hidden = true;
+    showMethodsView(modalEl);
 
     modalEl.classList.add("open");
     document.body.style.overflow = "hidden";
