@@ -1446,6 +1446,30 @@ h1, h2, h3 {
   background: var(--color-primary-dark);
 }
 
+.purchase-breb-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.breb-badge {
+  flex-shrink: 0;
+  display: inline-block;
+  background: #4b2d7f;
+  color: #ffd23f;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-top: 1px;
+}
+
 .purchase-nequi-amount {
   font-size: 0.92rem;
   margin-bottom: 12px;

@@ -156,8 +156,8 @@
     {
       id: "nequi",
       icon: "📲",
-      title: "Transferir a Nequi",
-      description: "Transfiere el valor exacto y confírmanos por WhatsApp.",
+      title: "Transferir a Nequi o Bre-B",
+      description: "Desde Nequi, Bancolombia o cualquier banco con llave Bre-B.",
       handler(order, modal) {
         showNequiPanel(order, modal);
       }
@@ -231,9 +231,10 @@
       '      <span class="purchase-nequi-number">' + NEQUI_CONFIG.displayNumber + '</span>' +
       '      <button type="button" class="purchase-nequi-copy">Copiar</button>' +
       '    </div>' +
+      '    <p class="purchase-breb-note"><span class="breb-badge">Bre-B</span><span>Este número también es nuestra <strong>llave Bre-B</strong>, por si transfieres desde otro banco.</span></p>' +
       '    <p class="purchase-nequi-amount">Valor a transferir: <strong class="purchase-nequi-amount-value"></strong></p>' +
       '    <ol class="purchase-nequi-steps">' +
-      '      <li>Envía el valor exacto a ese número desde tu app Nequi o Bancolombia.</li>' +
+      '      <li>Envía el valor exacto a ese número desde Nequi, Bancolombia o tu banco (llave Bre-B).</li>' +
       '      <li>Toca el botón verde para confirmarnos tu transferencia.</li>' +
       '      <li>¡Listo! Alistamos tu pedido de inmediato. 🐝</li>' +
       '    </ol>' +
