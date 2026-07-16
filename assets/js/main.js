@@ -114,6 +114,94 @@ const PRODUCTS = [
     price: 70000,
     description: "Combo exclusivo Marcál Café + Flower Miel: Café Excelso Molido 250g y Miel de Abejas Pura y Cruda 650g. Dos marcas, lo mejor de la naturaleza.",
     image: "assets/img/combo-cafe-miel.jpg"
+  },
+  {
+    id: "ahumador-apicultura",
+    name: "Ahumador para Apicultura",
+    category: "insumos-apicolas",
+    price: 80000,
+    description: "En acero inoxidable con fuelle y rejilla de protección. Calma a tus abejas de forma segura y revisa la colmena con total tranquilidad. El compañero infaltable de todo apicultor.",
+    image: "assets/img/ahumador-apicultura.jpg"
+  },
+  {
+    id: "cepillo-abejas",
+    name: "Cepillo de Abejas",
+    category: "insumos-apicolas",
+    price: 15000,
+    description: "Cerdas suaves y mango de madera para apartar a las abejas del panal sin lastimarlas. Ideal para cosechar tu miel cuidando cada abeja de la colmena.",
+    image: "assets/img/cepillo-abejas.jpg"
+  },
+  {
+    id: "colmena-abejas-nativas",
+    name: "Colmena para Abejas Nativas (sin abejas)",
+    category: "insumos-apicolas",
+    price: 75000,
+    description: "Colmena en madera diseñada para abejas nativas sin aguijón (meliponicultura). Lista para que instales tu propia colonia. Medidas internas 17×17 cm y 25 cm de altura; 4 piezas: piquera, 2 alzas y techo con respiradero.",
+    image: "assets/img/colmena-abejas-nativas.jpg"
+  },
+  {
+    id: "colmena-abejas-nativas-con-abejas",
+    name: "Colmena para Abejas Nativas (con abejas)",
+    category: "insumos-apicolas",
+    price: 250000,
+    description: "Colmena en madera con su colonia de abejas nativas sin aguijón ya establecida: llega viva, activa y lista para crecer. Medidas internas 17×17 cm y 25 cm de altura; 4 piezas: piquera, 2 alzas y techo con respiradero.",
+    image: "assets/img/colmena-abejas-nativas-con-abejas.jpg"
+  },
+  {
+    id: "jaula-benton-reina",
+    name: "Jaula Benton para Reina",
+    category: "insumos-apicolas",
+    price: 1200,
+    description: "La jaula clásica para transportar e introducir reinas con seguridad: compartimentos para el candi y la reina con su séquito, y ventilación adecuada en todo el viaje.",
+    image: "assets/img/jaula-benton-reina.jpg"
+  },
+  {
+    id: "jaula-introduccion-reina",
+    name: "Jaula de Introducción para Reina",
+    category: "insumos-apicolas",
+    price: 15000,
+    description: "Jaula tipo clip para presentar la nueva reina a la colmena de forma gradual y protegida, aumentando su aceptación por las obreras. Introducciones sin riesgo.",
+    image: "assets/img/jaula-introduccion-reina.jpg"
+  },
+  {
+    id: "jaula-marcaje-reinas",
+    name: "Jaula de Marcaje para Reinas",
+    category: "insumos-apicolas",
+    price: 13000,
+    description: "Tubo con émbolo de espuma que sujeta a la reina con delicadeza para marcarla con el código de color de su año. Identifícala fácil en cada revisión, sin dañarla.",
+    image: "assets/img/jaula-marcaje-reinas.jpg"
+  },
+  {
+    id: "levantador-marcos",
+    name: "Levantador de Marcos",
+    category: "insumos-apicolas",
+    price: 30000,
+    description: "Pinza levanta cuadros en acero con mangos de madera: agarra los marcos con firmeza y revisa tu colmena de forma rápida, cómoda y sin apretones.",
+    image: "assets/img/levantador-marcos.jpg"
+  },
+  {
+    id: "levantamarco",
+    name: "Levantamarco",
+    category: "insumos-apicolas",
+    price: 23000,
+    description: "Palanca multiusos en acero inoxidable con gancho levanta cuadros: despega marcos, raspa propóleo y cera. La herramienta esencial que no puede faltar en tu apiario.",
+    image: "assets/img/levantamarco.jpg"
+  },
+  {
+    id: "porta-candi-reina",
+    name: "Porta Candi para Reina",
+    category: "insumos-apicolas",
+    price: 5000,
+    description: "Alimenta y libera gradualmente a la reina durante su introducción: las obreras consumen el candi y la aceptan de forma natural. Sencillo, práctico y seguro.",
+    image: "assets/img/porta-candi-reina.jpg"
+  },
+  {
+    id: "rulo-cria-reinas",
+    name: "Rulo para Cría de Reinas",
+    category: "insumos-apicolas",
+    price: 3500,
+    description: "Protege la celda real y acompaña el nacimiento seguro de tus futuras reinas. Con copacelda y accesorios para criar reinas como un profesional.",
+    image: "assets/img/rulo-cria-reinas.jpg"
   }
 ];
 
@@ -121,7 +209,8 @@ const CATEGORY_LABELS = {
   "mieles": "Mieles",
   "bienestar": "Bienestar",
   "cuidado-personal": "Cuidado Personal",
-  "combos": "Combos y Kits"
+  "combos": "Combos y Kits",
+  "insumos-apicolas": "Insumos Apícolas"
 };
 
 const priceFormatter = new Intl.NumberFormat("es-CO", {
