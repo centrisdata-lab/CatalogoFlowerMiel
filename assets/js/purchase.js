@@ -137,6 +137,9 @@
   const PAYMENT_METHODS = [
     {
       id: "online",
+      // Oculto por ahora: cambiar a true cuando la pasarela esté activada
+      // (ver ONLINE_PAYMENT_CONFIG arriba).
+      enabled: false,
       icon: "💳",
       title: "Pagar en línea",
       description: "PSE, tarjeta, Nequi o Botón Bancolombia. Pago seguro.",
@@ -209,7 +212,7 @@
       '  <p class="purchase-qty-hint">💡 Usa "Añadir al carrito" solo si quieres comprar más productos. Si únicamente llevas este, elige abajo cómo pagar.</p>' +
       '  <p class="purchase-modal-question">¿Cómo deseas realizar tu compra?</p>' +
       '  <div class="purchase-options">' +
-      PAYMENT_METHODS.map(function (method) {
+      PAYMENT_METHODS.filter(function (method) { return method.enabled !== false; }).map(function (method) {
         return (
           '<button type="button" class="purchase-option" data-method="' + method.id + '">' +
           '  <span class="purchase-option-icon">' + (method.iconSvg || method.icon) + '</span>' +
