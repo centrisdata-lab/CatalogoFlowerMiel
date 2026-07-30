@@ -157,18 +157,18 @@ const PRODUCTS = [
   },
   {
     id: "jaula-introduccion-reina",
-    name: "Jaula de Introducción para Reina",
+    name: "Jaula para marcar reinas tipo Émbolo",
     category: "insumos-apicolas",
     price: 15000,
-    description: "Jaula tipo clip para presentar la nueva reina a la colmena de forma gradual y protegida, aumentando su aceptación por las obreras. Introducciones sin riesgo.",
+    description: "Sujeta a la reina con suavidad contra la malla gracias a su émbolo de espuma, dejándola quieta para marcarla sin lastimarla. Marcaje rápido, seguro y preciso.",
     image: "assets/img/jaula-introduccion-reina.jpg"
   },
   {
     id: "jaula-marcaje-reinas",
-    name: "Jaula de Marcaje para Reinas",
+    name: "Pinza para almacenar reina",
     category: "insumos-apicolas",
     price: 13000,
-    description: "Tubo con émbolo de espuma que sujeta a la reina con delicadeza para marcarla con el código de color de su año. Identifícala fácil en cada revisión, sin dañarla.",
+    description: "Captura y resguarda a la reina de forma segura mientras revisas o trasladas la colmena. Su diseño transparente te permite verla en todo momento sin estresarla.",
     image: "assets/img/jaula-marcaje-reinas.jpg"
   },
   {
@@ -181,7 +181,7 @@ const PRODUCTS = [
   },
   {
     id: "levantamarco",
-    name: "Levantamarco",
+    name: "Palanca en acero inoxidable",
     category: "insumos-apicolas",
     price: 23000,
     description: "Palanca multiusos en acero inoxidable con gancho levanta cuadros: despega marcos, raspa propóleo y cera. La herramienta esencial que no puede faltar en tu apiario.",
@@ -189,10 +189,10 @@ const PRODUCTS = [
   },
   {
     id: "porta-candi-reina",
-    name: "Porta Candi para Reina",
+    name: "Alimentador de jarabe externo",
     category: "insumos-apicolas",
     price: 5000,
-    description: "Alimenta y libera gradualmente a la reina durante su introducción: las obreras consumen el candi y la aceptan de forma natural. Sencillo, práctico y seguro.",
+    description: "Se instala en la piquera para dar jarabe a tus abejas sin abrir la colmena. Refuerza la alimentación en épocas de escasez de forma práctica y sin robos entre colmenas.",
     image: "assets/img/porta-candi-reina.jpg"
   },
   {
