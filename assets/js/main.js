@@ -13,11 +13,11 @@ const PRODUCTS = [
   },
   {
     id: "miel-300",
-    name: "Miel Pura y Cruda 300gr",
+    name: "Miel Pura y Cruda 250gr",
     category: "mieles",
-    price: 18000,
+    price: 15000,
     description: "Miel artesanal sin procesos de refinamiento, con la esencia natural de las flores en un sabor fresco e intenso.",
-    image: "assets/img/miel-pura-300g.jpg"
+    image: "assets/img/miel-pura-250g.jpg"
   },
   {
     id: "miel-95",
@@ -88,7 +88,7 @@ const PRODUCTS = [
     name: "Combo Miel",
     category: "combos",
     price: 38000,
-    description: "Incluye Miel Pura y Cruda 300g, Crema Facial Restauradora Queen, Brillolips_Bee y bolinillo mielero. 100% natural.",
+    description: "Incluye Miel Pura y Cruda 250g, Crema Facial Restauradora Queen, Brillolips_Bee y bolinillo mielero. 100% natural.",
     image: "assets/img/combo-miel.jpg"
   },
   {
@@ -104,7 +104,7 @@ const PRODUCTS = [
     name: "Kit Natural Mini",
     category: "combos",
     price: 48000,
-    description: "Lo mejor de la colmena en presentación mini: Miel 300g, Polen 80g, Propóleo 35ml y bolinillo mielero. 100% natural.",
+    description: "Lo mejor de la colmena en presentación mini: Miel 250g, Polen 80g, Propóleo 35ml y bolinillo mielero. 100% natural.",
     image: "assets/img/kit-natural-mini.jpg"
   },
   {
