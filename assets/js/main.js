@@ -202,6 +202,110 @@ const PRODUCTS = [
     price: 3500,
     description: "Protege la celda real y acompaña el nacimiento seguro de tus futuras reinas. Con copacelda y accesorios para criar reinas como un profesional.",
     image: "assets/img/rulo-cria-reinas.jpg"
+  },
+  {
+    id: "dispensador-miel-vidrio-abejas",
+    name: "Dispensador de Miel en Vidrio con Abejas",
+    category: "accesorios-miel",
+    price: 40000,
+    description: "Tarro de vidrio con forma de colmena, decorado con abejitas de cristal y su bolinillo a juego. Una pieza preciosa que sirve la miel y decora tu mesa.",
+    image: "assets/img/dispensador-miel-vidrio-abejas.jpg"
+  },
+  {
+    id: "dispensador-miel-vidrio",
+    name: "Dispensador de Miel en Vidrio",
+    category: "accesorios-miel",
+    price: 32000,
+    description: "Elegante tarro de vidrio en forma de colmena con tapa y bolinillo de cristal incluido. Conserva tu miel siempre a la mano y sin desperdicio.",
+    image: "assets/img/dispensador-miel-vidrio.jpg"
+  },
+  {
+    id: "dispensador-miel-vidrio-madera",
+    name: "Dispensador de Miel en Vidrio y Madera",
+    category: "accesorios-miel",
+    price: 30000,
+    description: "Tarro de vidrio estilo colmena con tapa y bolinillo de madera natural. La combinación perfecta entre lo rústico y lo práctico para servir tu miel.",
+    image: "assets/img/dispensador-miel-vidrio-madera.jpg"
+  },
+  {
+    id: "dispensador-miel-pasta-valvula",
+    name: "Dispensador de Miel con Válvula",
+    category: "accesorios-miel",
+    price: 27000,
+    description: "Dispensador con palanca y bandeja recogegotas: sirve la cantidad exacta de miel con solo presionar, sin goteos ni manos pegajosas. Diseño en panal.",
+    image: "assets/img/dispensador-miel-pasta-valvula.jpg"
+  },
+  {
+    id: "valvula-dispensador-miel",
+    name: "Válvula Dispensador de Miel",
+    category: "accesorios-miel",
+    price: 15000,
+    description: "Válvula de repuesto con tapa y sello hermético para tus baldes o envases de miel. Sirve y envasa sin derrames, con cierre seguro entre usos.",
+    image: "assets/img/valvula-dispensador-miel.jpg"
+  },
+  {
+    id: "mini-bolinillo-mielero",
+    name: "Mini Bolinillo Mielero",
+    category: "accesorios-miel",
+    price: 1000,
+    description: "Bolinillo de madera natural en tamaño mini: toma la miel justa para tu té, tostada o postre sin que chorree. Práctico, económico y siempre útil.",
+    image: "assets/img/mini-bolinillo-mielero.jpg"
+  },
+  {
+    id: "peluche-abeja",
+    name: "Peluche Abeja",
+    category: "souvenirs",
+    price: 40000,
+    description: "Suave, tierno y abrazable. El regalo ideal para los amantes de las abejas, grandes y chicos. También queda hermoso decorando tu espacio.",
+    image: "assets/img/peluche-abeja.jpg"
+  },
+  {
+    id: "gorra-abeja-amarilla",
+    name: "Gorra Abeja Amarilla",
+    category: "souvenirs",
+    price: 20000,
+    description: "Gorra en tono miel con una abeja bordada entre flores. Cómoda, con visera curva y ajuste trasero. Perfecta para el campo o el día a día.",
+    image: "assets/img/gorra-abeja-amarilla.jpg"
+  },
+  {
+    id: "gorra-abeja-azul",
+    name: "Gorra Abeja Azul",
+    category: "souvenirs",
+    price: 20000,
+    description: "Gorra tipo trucker azul con malla blanca y abeja bordada en dorado. Fresca, con ajuste trasero y un estilo que se lleva a todas partes.",
+    image: "assets/img/gorra-abeja-azul.jpg"
+  },
+  {
+    id: "medias-abejas",
+    name: "Medias Abejas",
+    category: "souvenirs",
+    price: 17000,
+    description: "Medias en color miel con estampado de panal y abejitas. Suaves, cómodas y con ese detalle especial que alegra cualquier atuendo.",
+    image: "assets/img/medias-abejas.jpg"
+  },
+  {
+    id: "delantal-abeja",
+    name: "Delantal Abeja",
+    category: "souvenirs",
+    price: 15000,
+    description: "Delantal con una simpática abejita estampada y tirante ajustable al cuello. Ideal para cocinar, para el apiario o para regalar con cariño.",
+    image: "assets/img/delantal-abeja.jpg"
+  },
+  {
+    id: "collar-abeja",
+    name: "Collar Abeja",
+    category: "souvenirs",
+    price: 10000,
+    description: "Delicado collar con dije de abeja en esmalte negro y dorado con brillos. Un detalle elegante para llevar contigo el amor por las abejas.",
+    image: "assets/img/collar-abeja.jpg"
+  },
+  {
+    id: "diadema-antenas-abeja",
+    name: "Diadema Antenas de Abeja",
+    category: "souvenirs",
+    price: 7000,
+    description: "Diadema con antenas de pompón y coronita dorada. La favorita de los niños en las visitas al apiario y para disfraces o fotos divertidas.",
+    image: "assets/img/diadema-antenas-abeja.jpg"
   }
 ];
 
@@ -210,7 +314,9 @@ const CATEGORY_LABELS = {
   "bienestar": "Bienestar",
   "cuidado-personal": "Cuidado Personal",
   "combos": "Combos y Kits",
-  "insumos-apicolas": "Insumos Apícolas"
+  "insumos-apicolas": "Insumos Apícolas",
+  "accesorios-miel": "Accesorios para Miel",
+  "souvenirs": "Souvenirs Abeja"
 };
 
 const priceFormatter = new Intl.NumberFormat("es-CO", {
