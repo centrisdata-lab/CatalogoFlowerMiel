@@ -1635,6 +1635,45 @@ h1, h2, h3 {
   gap: 8px;
 }
 
+/* Botón "Compartir": solo en móvil, donde existe el menú nativo del sistema
+   (WhatsApp, estados, Instagram...). En escritorio se oculta. */
+.btn-share {
+  display: none;
+  width: 100%;
+  margin-top: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+
+.btn-share:hover,
+.btn-share:active {
+  background: var(--color-whatsapp);
+  border-color: var(--color-whatsapp);
+  color: #ffffff;
+}
+
+.btn-share:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+@media (max-width: 860px) {
+  .btn-share {
+    display: inline-flex;
+  }
+}
+
 .btn-add-cart {
   width: 44px;
   height: 44px;

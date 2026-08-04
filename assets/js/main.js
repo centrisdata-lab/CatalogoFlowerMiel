@@ -352,6 +352,10 @@ function createProductCard(product) {
           <button type="button" class="btn btn-primary btn-buy">Comprar</button>
         </div>
       </div>
+      <button type="button" class="btn-share" aria-label="Compartir producto">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Compartir
+      </button>
     </div>
   `;
 
@@ -388,16 +392,68 @@ function filterProducts(searchTerm, category) {
   });
 }
 
+// Comparte el producto con su foto usando el menú nativo del celular
+// (WhatsApp, estados, Instagram, etc.). Si el navegador no soporta compartir
+// archivos, cae a compartir solo texto; y si tampoco, copia el link.
+async function shareProduct(product, button) {
+  const url = `${window.location.origin}/#catalogo`;
+  const text = `${product.name} - ${priceFormatter.format(product.price)}\n\n${product.description}\n\nMíralo en nuestro catálogo:`;
+  const originalText = button.innerHTML;
+  button.disabled = true;
+  button.textContent = "Preparando...";
+
+  try {
+    const response = await fetch(product.image);
+    const blob = await response.blob();
+    const file = new File([blob], `${product.id}.jpg`, { type: blob.type || "image/jpeg" });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({ files: [file], title: product.name, text: `${text} ${url}` });
+      return;
+    }
+    if (navigator.share) {
+      await navigator.share({ title: product.name, text, url });
+      return;
+    }
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    button.textContent = "¡Copiado!";
+    setTimeout(() => { button.innerHTML = originalText; }, 1500);
+    return;
+  } catch (err) {
+    // El usuario canceló el menú de compartir: no es un error que deba avisarse.
+    if (err.name === "AbortError") return;
+    try {
+      await navigator.clipboard.writeText(`${text} ${url}`);
+      button.textContent = "¡Copiado!";
+      setTimeout(() => { button.innerHTML = originalText; }, 1500);
+      return;
+    } catch (copyErr) {
+      button.textContent = "No se pudo compartir";
+      setTimeout(() => { button.innerHTML = originalText; }, 2000);
+      return;
+    }
+  } finally {
+    button.disabled = false;
+    if (button.textContent === "Preparando...") button.innerHTML = originalText;
+  }
+}
+
 function initBuyButtons() {
   const grid = document.getElementById("productGrid");
   grid.addEventListener("click", (event) => {
     const buyButton = event.target.closest(".btn-buy");
     const cartButton = event.target.closest(".btn-add-cart");
-    if (!buyButton && !cartButton) return;
+    const shareButton = event.target.closest(".btn-share");
+    if (!buyButton && !cartButton && !shareButton) return;
 
-    const card = (buyButton || cartButton).closest(".product-card");
+    const card = (buyButton || cartButton || shareButton).closest(".product-card");
     const product = PRODUCTS.find((p) => p.id === card.dataset.productId);
     if (!product) return;
+
+    if (shareButton) {
+      shareProduct(product, shareButton);
+      return;
+    }
 
     if (buyButton) {
       window.FlowerPurchase.open(product);
