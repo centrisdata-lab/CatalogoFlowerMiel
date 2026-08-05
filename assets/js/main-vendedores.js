@@ -20,6 +20,14 @@ const PRODUCTS = [
     image: "../assets/img/miel-pura-300g.jpg"
   },
   {
+    id: "miel-250",
+    name: "Miel Pura y Cruda 250gr",
+    category: "mieles",
+    price: 15000,
+    description: "Miel artesanal sin procesos de refinamiento, con la esencia natural de las flores en un sabor fresco e intenso.",
+    image: "../assets/img/miel-pura-250g.jpg"
+  },
+  {
     id: "miel-95",
     name: "Miel Pura y Cruda 95gr",
     category: "mieles",
