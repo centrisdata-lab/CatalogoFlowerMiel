@@ -755,62 +755,8 @@ h1, h2, h3 {
    ============================================ */
 
 .apiturismo-section {
-  position: relative;
-  overflow: hidden;
-  background: #14200f;
+  background: var(--color-bg);
   padding-block: 80px;
-}
-
-.apiturismo-bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.apiturismo-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8, 14, 6, 0.82) 0%, rgba(8, 14, 6, 0.74) 50%, rgba(8, 14, 6, 0.82) 100%);
-}
-
-.apiturismo-content {
-  position: relative;
-  z-index: 1;
-}
-
-.apiturismo-section .section-heading h2,
-.apiturismo-section .section-tag {
-  color: var(--color-primary-light);
-}
-
-.apiturismo-section .section-heading p {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.apiturismo-list h3 {
-  color: #ffffff;
-}
-
-.apiturismo-list p {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.apiturismo-icon {
-  background: rgba(255, 255, 255, 0.95);
-}
-
-.apiturismo-gallery-toggle {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.apiturismo-gallery-toggle:hover {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
 }
 
 .apiturismo-inner {
@@ -846,14 +792,14 @@ h1, h2, h3 {
   box-shadow: var(--shadow-sm);
 }
 
-/* El color va definido más arriba, junto al overlay oscuro de la sección:
-   sobre el video el verde y el marrón originales no llegaban a 3:1. */
 .apiturismo-list h3 {
   font-size: 1.05rem;
+  color: var(--color-secondary-dark);
   margin-bottom: 4px;
 }
 
 .apiturismo-list p {
+  color: var(--color-text-muted);
   font-size: 0.95rem;
 }
 
@@ -963,64 +909,8 @@ h1, h2, h3 {
    ============================================ */
 
 .rescate-section {
-  position: relative;
-  overflow: hidden;
-  background: #14200f;
+  background: linear-gradient(180deg, var(--color-surface), var(--color-bg));
   padding-block: 80px;
-}
-
-.rescate-bg-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.rescate-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8, 14, 6, 0.82) 0%, rgba(8, 14, 6, 0.74) 50%, rgba(8, 14, 6, 0.82) 100%);
-}
-
-.rescate-content {
-  position: relative;
-  z-index: 1;
-}
-
-.rescate-section .section-heading h2 {
-  color: var(--color-primary-light);
-}
-
-.rescate-section .section-heading p,
-.rescate-list p {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.rescate-section .section-tag {
-  color: var(--color-primary-light);
-}
-
-.rescate-tagline {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.rescate-contact {
-  border-top-color: rgba(255, 255, 255, 0.2);
-}
-
-.rescate-contact p {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.rescate-contact strong {
-  color: #ffffff;
-}
-
-.rescate-alert {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-primary-light);
 }
 
 .rescate-inner {
@@ -1077,7 +967,9 @@ h1, h2, h3 {
   flex: none;
 }
 
-/* Los colores de texto van definidos más arriba, con el overlay de la sección. */
+.rescate-list p {
+  color: var(--color-text-muted);
+}
 
 .rescate-coverage {
   display: inline-block;
@@ -1091,6 +983,7 @@ h1, h2, h3 {
 
 .rescate-tagline {
   font-style: italic;
+  color: var(--color-secondary-dark);
   margin-bottom: 28px;
 }
 
@@ -2275,15 +2168,8 @@ input:focus-visible,
     scroll-behavior: auto !important;
   }
 
-  .hero-bg-video,
-  .apiturismo-bg-video,
-  .rescate-bg-video {
+  /* Sin el video, el poster del hero queda de fondo estático. */
+  .hero-bg-video {
     display: none;
-  }
-
-  .hero-bg-video + .hero-overlay,
-  .apiturismo-bg-video + .apiturismo-overlay,
-  .rescate-bg-video + .rescate-overlay {
-    background: rgba(20, 32, 15, 0.75);
   }
 }

@@ -581,51 +581,11 @@ function initImageZoom() {
   });
 }
 
-/* Los videos de fondo de las secciones inferiores pesan varios MB.
-   Se cargan solo cuando la sección está por entrar en pantalla, para no
-   gastar datos de quien nunca baja hasta ahí. El poster se ve mientras tanto. */
-function initLazyVideos() {
-  const videos = document.querySelectorAll("video[data-src]");
-  if (!videos.length) return;
-
-  const load = (video) => {
-    if (video.dataset.loaded) return;
-    video.dataset.loaded = "1";
-    const source = document.createElement("source");
-    source.src = video.dataset.src;
-    source.type = "video/mp4";
-    video.appendChild(source);
-    video.load();
-    video.play().catch(() => {
-      /* Si el navegador bloquea el autoplay, queda el poster visible. */
-    });
-  };
-
-  if (!("IntersectionObserver" in window)) {
-    videos.forEach(load);
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        load(entry.target);
-        observer.unobserve(entry.target);
-      });
-    },
-    { rootMargin: "300px 0px" }
-  );
-
-  videos.forEach((video) => observer.observe(video));
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   initCatalog();
   initBuyButtons();
   initNav();
   initHeaderScroll();
   initImageZoom();
-  initLazyVideos();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
