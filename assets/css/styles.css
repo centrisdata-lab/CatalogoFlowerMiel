@@ -773,7 +773,7 @@ h1, h2, h3 {
 .apiturismo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 14, 6, 0.94) 0%, rgba(8, 14, 6, 0.9) 50%, rgba(8, 14, 6, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(8, 14, 6, 0.82) 0%, rgba(8, 14, 6, 0.74) 50%, rgba(8, 14, 6, 0.82) 100%);
 }
 
 .apiturismo-content {
@@ -846,14 +846,14 @@ h1, h2, h3 {
   box-shadow: var(--shadow-sm);
 }
 
+/* El color va definido más arriba, junto al overlay oscuro de la sección:
+   sobre el video el verde y el marrón originales no llegaban a 3:1. */
 .apiturismo-list h3 {
   font-size: 1.05rem;
-  color: var(--color-secondary-dark);
   margin-bottom: 4px;
 }
 
 .apiturismo-list p {
-  color: var(--color-text-muted);
   font-size: 0.95rem;
 }
 
@@ -981,7 +981,7 @@ h1, h2, h3 {
 .rescate-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 14, 6, 0.94) 0%, rgba(8, 14, 6, 0.9) 50%, rgba(8, 14, 6, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(8, 14, 6, 0.82) 0%, rgba(8, 14, 6, 0.74) 50%, rgba(8, 14, 6, 0.82) 100%);
 }
 
 .rescate-content {
@@ -1077,9 +1077,7 @@ h1, h2, h3 {
   flex: none;
 }
 
-.rescate-list p {
-  color: var(--color-text-muted);
-}
+/* Los colores de texto van definidos más arriba, con el overlay de la sección. */
 
 .rescate-coverage {
   display: inline-block;
@@ -1093,7 +1091,6 @@ h1, h2, h3 {
 
 .rescate-tagline {
   font-style: italic;
-  color: var(--color-secondary-dark);
   margin-bottom: 28px;
 }
 
