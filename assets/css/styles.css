@@ -273,8 +273,10 @@ h1, h2, h3 {
 .hero-bg {
   position: absolute;
   inset: 0;
+  background-image: url('../img/hero-banner.jpg');
   background-size: cover;
   background-position: center;
+  background-color: #2b2115;
   transform: scale(1.05);
 }
 
@@ -288,7 +290,11 @@ h1, h2, h3 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(115deg, rgba(30, 22, 10, 0.82) 30%, rgba(30, 22, 10, 0.45) 65%, rgba(30, 22, 10, 0.2) 100%);
+  /* El video es claro (luminancia media ~179), asi que necesita un velo parejo
+     para que el texto blanco mantenga contraste AA en todo el ancho: el titulo
+     llega al 73% del viewport en escritorio y al 94% en movil. */
+  background:
+    linear-gradient(105deg, rgba(26, 18, 8, 0.82) 0%, rgba(26, 18, 8, 0.72) 55%, rgba(26, 18, 8, 0.62) 100%);
 }
 
 .hero-content {
@@ -297,6 +303,7 @@ h1, h2, h3 {
   color: #fff;
   max-width: 680px;
   padding-block: 80px;
+  text-shadow: 0 2px 12px rgba(20, 14, 5, 0.55);
 }
 
 .hero-eyebrow {
@@ -2168,8 +2175,8 @@ input:focus-visible,
     scroll-behavior: auto !important;
   }
 
-  /* Sin el video, el poster del hero queda de fondo estático. */
+  /* Sin movimiento, el video se detiene y queda la foto de fondo del hero. */
   .hero-bg-video {
-    display: none;
+    visibility: hidden;
   }
 }

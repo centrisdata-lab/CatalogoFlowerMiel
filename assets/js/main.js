@@ -581,11 +581,29 @@ function initImageZoom() {
   });
 }
 
+// Si el sistema pide reducir movimiento, detiene el video del hero.
+// El fondo queda con la foto estática de .hero-bg.
+function initHeroMotion() {
+  const video = document.querySelector('.hero-bg-video');
+  if (!video) return;
+  const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const apply = () => {
+    if (query.matches) {
+      video.pause();
+    } else if (video.paused) {
+      video.play().catch(() => {});
+    }
+  };
+  apply();
+  query.addEventListener('change', apply);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initCatalog();
   initBuyButtons();
   initNav();
   initHeaderScroll();
+  initHeroMotion();
   initImageZoom();
   document.getElementById("year").textContent = new Date().getFullYear();
 });
