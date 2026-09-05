@@ -8,8 +8,12 @@
   --color-primary-light: #ffb534;
   --color-secondary: #3f7d3a;
   --color-secondary-dark: #2e5c2a;
-  --color-whatsapp: #25d366;
-  --color-whatsapp-dark: #1da851;
+  /* Verde oscuro de WhatsApp, ajustado para llegar a 4.5:1 con texto blanco
+     (el #25d366 original daba 1.98:1; el #128c7e oficial, 4.14:1). */
+  --color-whatsapp: #0f7b6f;
+  --color-whatsapp-dark: #0b5f56;
+  /* Verde brillante, solo para superficies sin texto encima (botón flotante). */
+  --color-whatsapp-bright: #25d366;
 
   --color-bg: #fffaf1;
   --color-surface: #ffffff;
@@ -473,6 +477,38 @@ h1, h2, h3 {
   gap: 12px;
 }
 
+/* En móvil los nombres largos ("Cuidado Personal", "Insumos Apícolas") dejaban
+   un chip por fila. Como carrusel ocupan una sola línea, igual que la quick-nav. */
+@media (max-width: 639px) {
+  .catalog-controls {
+    align-items: stretch;
+  }
+
+  .filter-chips {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 10px;
+    padding-block: 4px;
+    /* Sangra el padding del container para que el scroll llegue a los bordes. */
+    margin-inline: -24px;
+    padding-inline: 24px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+
+  .filter-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    flex: none;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+}
+
 .chip {
   padding: 10px 22px;
   border-radius: 999px;
@@ -498,15 +534,24 @@ h1, h2, h3 {
   box-shadow: var(--shadow-sm);
 }
 
+/* Dos columnas desde 360px: con ~40 productos, una sola columna generaba
+   35.000px de scroll. Por debajo de 360px la card queda tan angosta que
+   el botón "Comprar" no entra, así que ahí vuelve a una columna. */
 .product-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 28px;
+  gap: 14px;
+}
+
+@media (min-width: 360px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 640px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
   }
 }
 
@@ -641,6 +686,62 @@ h1, h2, h3 {
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--color-primary-dark);
+}
+
+/* En dos columnas la card queda angosta: se compacta el interior y el
+   footer pasa a columna para que precio y acciones no se pisen. */
+@media (max-width: 639px) {
+  .product-body {
+    padding: 14px;
+  }
+
+  .product-name {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .product-description {
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+    /* Al achicarse deja de contar como "texto grande" para WCAG, así que
+       necesita un ámbar más oscuro para mantener 4.5:1 sobre blanco. */
+    color: #a86305;
+  }
+
+  .product-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .product-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* El carrito ocupa 44px fijos; el botón toma el resto y reduce su padding
+     para que "Comprar" no se salga de la card angosta. */
+  .product-actions .btn-buy {
+    flex: 1;
+    min-width: 0;
+    padding-inline: 8px;
+    font-size: 0.82rem;
+  }
+
+  .btn-add-cart {
+    flex: none;
+  }
+
+  .product-badge {
+    font-size: 0.65rem;
+    padding: 5px 10px;
+    top: 10px;
+    left: 10px;
+  }
 }
 
 .btn-buy {
@@ -1173,7 +1274,8 @@ h1, h2, h3 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--color-whatsapp);
+  /* Solo lleva el ícono, sin texto: puede usar el verde brillante de marca. */
+  background: var(--color-whatsapp-bright);
   color: #fff;
   display: flex;
   align-items: center;
