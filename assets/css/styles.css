@@ -8,11 +8,9 @@
   --color-primary-light: #ffb534;
   --color-secondary: #3f7d3a;
   --color-secondary-dark: #2e5c2a;
-  /* Verde oscuro de WhatsApp, ajustado para llegar a 4.5:1 con texto blanco
-     (el #25d366 original daba 1.98:1; el #128c7e oficial, 4.14:1). */
-  --color-whatsapp: #0a8754;
-  --color-whatsapp-dark: #076b41;
-  /* Verde brillante, solo para superficies sin texto encima (botón flotante). */
+  /* Verde de marca de WhatsApp, el mismo del botón flotante. */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1fb855;
   --color-whatsapp-bright: #25d366;
 
   --color-bg: #fffaf1;

@@ -588,14 +588,16 @@ function initHeroMotion() {
   const video = document.querySelector('.hero-bg-video');
   if (!video) return;
 
+  const query = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hide = () => { video.style.opacity = '0'; };
   const show = () => { video.style.opacity = ''; };
 
+  // Solo un fallo definitivo descarta la capa de video: un corte temporal de
+  // red no debe apagarla, porque el video se recupera solo.
   video.addEventListener('error', hide);
-  video.addEventListener('stalled', hide);
+  video.addEventListener('playing', show);
 
-  const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const apply = () => {
+  const intentar = () => {
     if (query.matches) {
       video.pause();
       hide();
@@ -603,15 +605,23 @@ function initHeroMotion() {
     }
     show();
     const started = video.play();
-    if (started) started.catch(hide);
+    if (started) started.catch(() => { hide(); });
   };
-  apply();
-  query.addEventListener('change', apply);
 
-  // Si pasado un momento el video sigue sin avanzar, se descarta la capa.
+  intentar();
+  query.addEventListener('change', intentar);
+
+  // Algunos navegadores bloquean el autoplay hasta que hay interaccion.
+  // Al primer gesto se reintenta, y si funciona el evento 'playing' la muestra.
+  const alInteractuar = () => { if (video.paused) intentar(); };
+  ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach((ev) => {
+    window.addEventListener(ev, alInteractuar, { once: true, passive: true });
+  });
+
+  // Si al cabo de unos segundos nunca arranco, queda la foto de fondo.
   window.setTimeout(() => {
-    if (!query.matches && (video.paused || video.readyState < 2)) hide();
-  }, 3000);
+    if (!query.matches && video.paused) hide();
+  }, 6000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
