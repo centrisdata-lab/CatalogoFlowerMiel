@@ -581,21 +581,37 @@ function initImageZoom() {
   });
 }
 
-// Si el sistema pide reducir movimiento, detiene el video del hero.
-// El fondo queda con la foto estática de .hero-bg.
+// El video del hero es una capa sobre la foto de fondo. Si no puede
+// reproducirse (movimiento reducido, autoplay bloqueado, ahorro de energia,
+// formato no soportado), se oculta y queda la foto estatica de .hero-bg.
 function initHeroMotion() {
   const video = document.querySelector('.hero-bg-video');
   if (!video) return;
+
+  const hide = () => { video.style.opacity = '0'; };
+  const show = () => { video.style.opacity = ''; };
+
+  video.addEventListener('error', hide);
+  video.addEventListener('stalled', hide);
+
   const query = window.matchMedia('(prefers-reduced-motion: reduce)');
   const apply = () => {
     if (query.matches) {
       video.pause();
-    } else if (video.paused) {
-      video.play().catch(() => {});
+      hide();
+      return;
     }
+    show();
+    const started = video.play();
+    if (started) started.catch(hide);
   };
   apply();
   query.addEventListener('change', apply);
+
+  // Si pasado un momento el video sigue sin avanzar, se descarta la capa.
+  window.setTimeout(() => {
+    if (!query.matches && (video.paused || video.readyState < 2)) hide();
+  }, 3000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

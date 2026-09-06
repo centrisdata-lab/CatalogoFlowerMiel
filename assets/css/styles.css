@@ -10,8 +10,8 @@
   --color-secondary-dark: #2e5c2a;
   /* Verde oscuro de WhatsApp, ajustado para llegar a 4.5:1 con texto blanco
      (el #25d366 original daba 1.98:1; el #128c7e oficial, 4.14:1). */
-  --color-whatsapp: #0f7b6f;
-  --color-whatsapp-dark: #0b5f56;
+  --color-whatsapp: #0a8754;
+  --color-whatsapp-dark: #076b41;
   /* Verde brillante, solo para superficies sin texto encima (botón flotante). */
   --color-whatsapp-bright: #25d366;
 
@@ -280,11 +280,16 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 
+/* Capa de video encima de la foto. Si el navegador bloquea la reproduccion,
+   ahorra energia o no soporta el formato, queda visible .hero-bg. */
 .hero-bg-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transform: scale(1.05);
 }
 
 .hero-overlay {
@@ -2175,8 +2180,8 @@ input:focus-visible,
     scroll-behavior: auto !important;
   }
 
-  /* Sin movimiento, el video se detiene y queda la foto de fondo del hero. */
+  /* Sin movimiento, el video se oculta y queda la foto de fondo del hero. */
   .hero-bg-video {
-    visibility: hidden;
+    opacity: 0;
   }
 }
