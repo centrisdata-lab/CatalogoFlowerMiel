@@ -10,3 +10,7 @@ FOTOS NUEVAS/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Configuración local de Claude Code (contiene rutas y credenciales locales)
+.claude/settings.json
+.claude/settings.local.json
