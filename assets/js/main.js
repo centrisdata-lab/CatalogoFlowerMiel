@@ -588,7 +588,6 @@ function initHeroMotion() {
   const video = document.querySelector('.hero-bg-video');
   if (!video) return;
 
-  const query = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hide = () => { video.style.opacity = '0'; };
   const show = () => { video.style.opacity = ''; };
 
@@ -598,18 +597,12 @@ function initHeroMotion() {
   video.addEventListener('playing', show);
 
   const intentar = () => {
-    if (query.matches) {
-      video.pause();
-      hide();
-      return;
-    }
     show();
     const started = video.play();
     if (started) started.catch(() => { hide(); });
   };
 
   intentar();
-  query.addEventListener('change', intentar);
 
   // Algunos navegadores bloquean el autoplay hasta que hay interaccion.
   // Al primer gesto se reintenta, y si funciona el evento 'playing' la muestra.
@@ -620,7 +613,7 @@ function initHeroMotion() {
 
   // Si al cabo de unos segundos nunca arranco, queda la foto de fondo.
   window.setTimeout(() => {
-    if (!query.matches && video.paused) hide();
+    if (video.paused) hide();
   }, 6000);
 }
 

@@ -2178,8 +2178,6 @@ input:focus-visible,
     scroll-behavior: auto !important;
   }
 
-  /* Sin movimiento, el video se oculta y queda la foto de fondo del hero. */
-  .hero-bg-video {
-    opacity: 0;
-  }
+  /* El video del hero queda fuera a proposito: es un plano lento y suave,
+     sin destellos ni movimiento brusco, y es el fondo de la marca. */
 }
