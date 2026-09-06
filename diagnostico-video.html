@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico del video del hero</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px; background:#fffaf1; color:#2b2115; }
+  h1 { font-size: 1.3rem; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  td { padding: 8px 10px; border-bottom: 1px solid #e8ddc8; font-size: 14px; vertical-align: top; }
+  td:first-child { font-weight: 600; width: 45%; }
+  .ok { color: #0a6b3d; font-weight: 700; }
+  .bad { color: #b3261e; font-weight: 700; }
+  video { width: 100%; max-width: 360px; border-radius: 12px; background:#2b2115; }
+  #copiar { padding: 12px 20px; font-size: 15px; border-radius: 999px; border: 0;
+            background:#e8960c; color:#fff; font-weight:700; cursor:pointer; }
+  pre { background:#fff; padding:12px; border-radius:8px; overflow:auto; font-size:12px; }
+</style>
+</head>
+<body>
+<h1>Diagnóstico del video del hero</h1>
+<p>Esta página prueba el video igual que lo hace el sitio. Al terminar, pulsá el botón y pegame el resultado.</p>
+
+<video id="v" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-banner.jpg">
+  <source src="assets/video/hero-honey.webm" type="video/webm">
+  <source src="assets/video/hero-honey.mp4" type="video/mp4">
+</video>
+
+<table id="tabla"></table>
+<button id="copiar">Copiar el resultado</button>
+<pre id="salida" hidden></pre>
+
+<script>
+const v = document.getElementById('v');
+const eventos = [];
+['loadstart','loadedmetadata','loadeddata','canplay','canplaythrough','play','playing',
+ 'pause','waiting','stalled','suspend','error','abort','emptied'].forEach(e => {
+  v.addEventListener(e, () => eventos.push(e + ' @' + v.currentTime.toFixed(2) + 's'));
+});
+
+function fila(k, val, estado) {
+  const cls = estado === true ? 'ok' : estado === false ? 'bad' : '';
+  return '<tr><td>' + k + '</td><td class="' + cls + '">' + val + '</td></tr>';
+}
+
+async function medir() {
+  const t1 = v.currentTime;
+  await new Promise(r => setTimeout(r, 2500));
+  const t2 = v.currentTime;
+  const avanza = Math.abs(t2 - t1) > 0.3;
+
+  const errText = v.error
+    ? ('código ' + v.error.code + (v.error.message ? ' — ' + v.error.message : ''))
+    : 'ninguno';
+
+  const filas = [
+    fila('¿El video avanza?', avanza ? 'SÍ, se reproduce' : 'NO, está detenido', avanza),
+    fila('Formato en uso', v.currentSrc ? v.currentSrc.split('/').pop() : '(ninguno)'),
+    fila('Soporta WebM', v.canPlayType('video/webm; codecs="vp9"') || 'no'),
+    fila('Soporta MP4 H.264', v.canPlayType('video/mp4; codecs="avc1.4d4028"') || 'no'),
+    fila('paused', String(v.paused), !v.paused),
+    fila('readyState', v.readyState + ' (4 = listo)', v.readyState === 4),
+    fila('networkState', String(v.networkState)),
+    fila('Dimensiones decodificadas', v.videoWidth + '×' + v.videoHeight,
+         v.videoWidth > 0),
+    fila('Error del reproductor', errText, !v.error),
+    fila('Reducir movimiento activo',
+         String(matchMedia('(prefers-reduced-motion: reduce)').matches),
+         !matchMedia('(prefers-reduced-motion: reduce)').matches),
+    fila('Ahorro de datos', String(navigator.connection && navigator.connection.saveData)),
+    fila('Tipo de conexión', (navigator.connection && navigator.connection.effectiveType) || 'desconocido'),
+    fila('Navegador', navigator.userAgent),
+    fila('Eventos registrados', eventos.join(' · ') || '(ninguno)')
+  ];
+  document.getElementById('tabla').innerHTML = filas.join('');
+
+  window.__resumen = filas.join('\n')
+    .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+}
+
+v.play().catch(e => eventos.push('play() rechazado: ' + e.name));
+medir();
+setTimeout(medir, 6000);
+
+document.getElementById('copiar').addEventListener('click', async () => {
+  await medir();
+  const txt = window.__resumen;
+  document.getElementById('salida').hidden = false;
+  document.getElementById('salida').textContent = txt;
+  try { await navigator.clipboard.writeText(txt); alert('Copiado. Pegáselo a Claude.'); }
+  catch (e) { alert('Seleccioná el texto de abajo y copialo.'); }
+});
+</script>
+</body>
+</html>
